@@ -1,0 +1,17 @@
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\bin\Release\net9.0\MyLearningProject.exe
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\bin\Release\net9.0\MyLearningProject.deps.json
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\bin\Release\net9.0\MyLearningProject.runtimeconfig.json
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\bin\Release\net9.0\MyLearningProject.dll
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\bin\Release\net9.0\MyLearningProject.pdb
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\bin\Release\net9.0\Newtonsoft.Json.dll
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\obj\Release\net9.0\MyLearningProject.csproj.AssemblyReference.cache
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\obj\Release\net9.0\MyLearningProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\obj\Release\net9.0\MyLearningProject.AssemblyInfoInputs.cache
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\obj\Release\net9.0\MyLearningProject.AssemblyInfo.cs
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\obj\Release\net9.0\MyLearningProject.csproj.CoreCompileInputs.cache
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\obj\Release\net9.0\MyLearni.72CDA291.Up2Date
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\obj\Release\net9.0\MyLearningProject.dll
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\obj\Release\net9.0\refint\MyLearningProject.dll
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\obj\Release\net9.0\MyLearningProject.pdb
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\obj\Release\net9.0\MyLearningProject.genruntimeconfig.cache
+C:\Users\saidworks\Desktop\workspace\MyLearningProject\MyLearningProject\obj\Release\net9.0\ref\MyLearningProject.dll
