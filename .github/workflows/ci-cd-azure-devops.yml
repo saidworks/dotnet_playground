@@ -34,7 +34,7 @@ jobs:
 
       - name: Publish
         working-directory: SZFunction/SZFunction
-        run: dotnet publish SZFunction.csproj --configuration Release --no-build -o /github/workspace/publish
+        run: dotnet publish SZFunction.csproj --configuration Release --no-build -o ./publish
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
