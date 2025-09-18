@@ -1,0 +1,73 @@
+﻿name: CI-CD via Azure DevOps
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'SZFunction/**'
+      - '.github/workflows/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build .NET 9 app
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore
+        working-directory: SZFunction
+        run: dotnet restore SZFunction.csproj
+
+      - name: Build
+        working-directory: SZFunction
+        run: dotnet build SZFunction.csproj --configuration Release --no-restore
+
+      - name: Publish
+        working-directory: SZFunction
+        run: dotnet publish SZFunction.csproj --configuration Release --no-build -o ../publish
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: szfunction_publish
+          path: SZFunction/../publish
+
+  trigger-azure-devops:
+    name: Trigger Azure DevOps pipeline (CD)
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Azure DevOps pipeline
+        uses: Azure/pipelines@v1
+        with:
+          azure-devops-project-url: ${{ secrets.AZURE_DEVOPS_PROJECT_URL }}
+          azure-pipeline-name: ${{ secrets.AZURE_DEVOPS_PIPELINE_NAME }}
+          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+          wait-for-completion: true
+          template-parameters: |
+            buildArtifactName: szfunction_publish
+            gitSha: ${{ github.sha }}
+            buildNumber: ${{ github.run_number }}
+
+      # Example of downloading the artifact from GitHub into ADO with a pipeline
+      # The Azure DevOps pipeline you trigger should be configured to:
+      #  1) Download the GitHub artifact (via DownloadGitHubRelease / REST or use pipelines "DownloadGitHub" ext)
+      #  2) Deploy to Azure (e.g., Azure Web App, Functions, Container App) using appropriate ADO tasks
+
+# Setup instructions:
+# 1. In GitHub repo settings, add these secrets:
+#    - AZURE_DEVOPS_PROJECT_URL: https://dev.azure.com/<org>/<project>
+#    - AZURE_DEVOPS_PIPELINE_NAME: The name of the ADO pipeline to run (or use pipelineId input instead)
+#    - AZURE_DEVOPS_TOKEN: A PAT with access to run pipelines (Scopes: Build (Read & execute), Project & Team (Read))
+# 2. Ensure your Azure DevOps pipeline is configured to deploy to Azure (Service connection + tasks).
+# 3. Optionally, if you prefer to pass pipeline variables instead of template-parameters, add the "variables" input.

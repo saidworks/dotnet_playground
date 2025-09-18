@@ -1,5 +1,4 @@
-﻿
-using ConsoleAppLearning.scratches;
+﻿using ConsoleAppLearning.scratches;
 
 namespace ConsoleAppLearning
 {
@@ -21,12 +20,35 @@ namespace ConsoleAppLearning
 
             var asyncDemo = host.Services.GetRequiredService<AsyncDemo>();
             await asyncDemo.multipleHttpRequests();
-            
+
             await host.RunAsync();*/
             // PetUI petUi = new PetUI();
             // petUi.PetMenu();
-            NumberSratch.play();
-            
+            string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
+            string[] orderItems = orderStream.Split(',');
+            Dictionary<String, String> orderDictionary = orderItems
+                .Select(item =>
+                {
+                    if (item.Length <= 3 || item.Length > 4)
+                    {
+                        return new KeyValuePair<string, string>(item, "Error");
+                    }
+                    else
+                    {
+                        return new KeyValuePair<string, string>(item, "");
+                    }
+                }).ToDictionary();
+            foreach (var item in orderDictionary)
+            {
+                Console.WriteLine(item.Key);
+                if (item.Value != "")
+                {
+                    Console.Write(item.Key);
+                    Console.WriteLine($" :{
+                        item.Value
+                    }");
+                }
+            }
         }
     }
 }
