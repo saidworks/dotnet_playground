@@ -25,15 +25,15 @@ jobs:
           dotnet-version: '9.0.x'
 
       - name: Restore
-        working-directory: SZFunction
+        working-directory: SZFunction/SZFunction
         run: dotnet restore SZFunction.csproj
 
       - name: Build
-        working-directory: SZFunction
+        working-directory: SZFunction/SZFunction
         run: dotnet build SZFunction.csproj --configuration Release --no-restore
 
       - name: Publish
-        working-directory: SZFunction
+        working-directory: SZFunction/SZFunction
         run: dotnet publish SZFunction.csproj --configuration Release --no-build -o ../publish
 
       - name: Upload build artifact
