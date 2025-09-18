@@ -1,0 +1,7 @@
+﻿services:
+  szfunction:
+    image: szfunction
+    build:
+      context: .
+      dockerfile: SZFunction/Dockerfile
+
