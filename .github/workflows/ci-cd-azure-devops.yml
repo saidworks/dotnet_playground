@@ -34,13 +34,13 @@ jobs:
 
       - name: Publish
         working-directory: SZFunction/SZFunction
-        run: dotnet publish SZFunction.csproj --configuration Release --no-build -o ../publish
+        run: dotnet publish SZFunction.csproj --configuration Release --no-build -o /github/workspace/publish
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: szfunction_publish
-          path: SZFunction/../publish
+          path: publish
 
   trigger-azure-devops:
     name: Trigger Azure DevOps pipeline (CD)
