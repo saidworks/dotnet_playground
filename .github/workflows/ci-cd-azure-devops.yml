@@ -59,6 +59,7 @@ jobs:
 #          creds: ${{ secrets.AZURE_CREDENTIALS }} # Option 1: Using a service principal
           client-id: ${{ secrets.AZURE_CLIENT_ID }} # Option 2: Using managed identity
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
