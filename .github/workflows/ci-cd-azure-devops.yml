@@ -57,7 +57,7 @@ jobs:
           path: publish
 
       - name: Azure Login
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
           # Choose ONE of these authentication methods
 #          creds: ${{ secrets.AZURE_CREDENTIALS }} # Option 1: Using a service principal
@@ -66,7 +66,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
 
       - name: Deploy to Azure functions
-        uses: azure/webapps-deploy@v2
+        uses: azure/webapps-deploy@v3
         with:
           app-name: 'szlearn-szfunction'
           package: './publish'
