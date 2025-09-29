@@ -42,31 +42,31 @@ jobs:
           name: szfunction_publish
           path: publish
           
-    deploy:
-      needs: build
-      runs-on: ubuntu-latest
-      steps:
-        - name: Download artifact
-          uses: actions/download-artifact@v3
-          with:
-            name: app-publish
-            path: ./publish
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: app-publish
+          path: ./publish
 
-        - name: Azure Login
-          uses: azure/login@v1
-          with:
-            # Choose ONE of these authentication methods
-            creds: ${{ secrets.AZURE_CREDENTIALS }} # Option 1: Using a service principal
-            # client-id: ${{ secrets.AZURE_CLIENT_ID }} # Option 2: Using managed identity
-            tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-            # subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          # Choose ONE of these authentication methods
+          creds: ${{ secrets.AZURE_CREDENTIALS }} # Option 1: Using a service principal
+          # client-id: ${{ secrets.AZURE_CLIENT_ID }} # Option 2: Using managed identity
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          # subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-        - name: Deploy to Azure Web App
-          uses: azure/webapps-deploy@v2
-          with:
-            app-name: 'sz-webapp'
-            package: './publish'
-            # slot-name: 'production' # Optional: Specify a slot name
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: 'sz-webapp'
+          package: './publish'
+          # slot-name: 'production' # Optional: Specify a slot name
       
       
       #  trigger-azure-devops:
