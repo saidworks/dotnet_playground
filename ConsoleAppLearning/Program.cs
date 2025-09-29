@@ -1,5 +1,6 @@
 ﻿using ConsoleAppLearning.scratches;
 
+using System.Globalization;
 namespace ConsoleAppLearning
 {
     public class Program
@@ -24,6 +25,16 @@ namespace ConsoleAppLearning
             await host.RunAsync();*/
             // PetUI petUi = new PetUI();
             // petUi.PetMenu();
+            StringsScratch stringsScratch = new StringsScratch();
+            string[] strs = ["flower", "flow", "flight"];
+            var prefix = stringsScratch.LongestCommonPrefix(strs);
+            
+            Console.WriteLine(prefix);
+            
+            decimal price = 123.45m;
+            int discount = 50;
+            Console.WriteLine($"Price: {price:C} (Save {discount:C})");
+
             string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
             string[] orderItems = orderStream.Split(',');
             Dictionary<String, String> orderDictionary = orderItems
@@ -50,5 +61,6 @@ namespace ConsoleAppLearning
                 }
             }
         }
+ 
     }
 }

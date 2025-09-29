@@ -1,0 +1,13 @@
+# PowerShell
+$SubscriptionId = "<YOUR_SUBSCRIPTION_ID>"
+$BackendRg      = "rg-tfstate"
+$BackendLoc     = "eastus"
+$StorageName    = "sttfstate<unique>"  # must be globally unique, 3-24 lowercase letters and numbers
+$ContainerName  = "tfstate"
+
+az account set --subscription $SubscriptionId
+
+
+az group create -n $BackendRg -l $BackendLoc
+az storage account create -g $BackendRg -n $StorageName -l $BackendLoc --sku Standard_LRS --encryption-services blob
+az storage container create --account-name $StorageName --name $ContainerName

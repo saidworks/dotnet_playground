@@ -504,3 +504,6 @@ local.settings.json
 # General logs directory
 logs/
 
+
+# terraform 
+terraform/backend_setup.ps1 
