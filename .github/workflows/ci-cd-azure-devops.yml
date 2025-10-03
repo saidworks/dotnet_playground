@@ -76,24 +76,6 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
 
-      - name: Create Azure Web App if it doesn't exist
-        uses: azure/CLI@v1
-        with:
-          inlineScript: |
-            # Check if web app exists
-            exists=$(az webapp show --name szlearn-szfunction --resource-group YOUR_RESOURCE_GROUP_NAME --query id --output tsv 2>/dev/null || echo "false")
-            
-            # Create web app if it doesn't exist
-            if [ "$exists" == "false" ]; then
-              echo "Creating Azure Web App 'szlearn-szfunction'..."
-              az webapp create --name szlearn-szfunction \
-                              --resource-group YOUR_RESOURCE_GROUP_NAME \
-                              --plan YOUR_APP_SERVICE_PLAN_NAME \
-                              --runtime "DOTNET:9.0"
-            else
-              echo "Azure Web App 'szlearn-szfunction' already exists."
-            fi
-
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
