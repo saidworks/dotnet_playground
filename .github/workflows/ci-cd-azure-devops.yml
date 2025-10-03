@@ -1,4 +1,4 @@
-﻿name: CI-CD via Azure DevOps
+﻿name: Deploy SZFunction to Azure Web App
 
 on:
   push:
@@ -6,11 +6,11 @@ on:
     paths:
       - 'SZFunction/**'
       - '.github/workflows/**'
-  workflow_dispatch:
-
+  
 permissions:
+  id-token: write # Add this permission specifically for the deploy job
   contents: read
-
+  
 jobs:
   build:
     name: Build .NET 9 app
@@ -45,9 +45,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write # Add this permission specifically for the deploy job
-      contents: read
 
     steps:
       - name: Download artifact
@@ -83,3 +80,6 @@ jobs:
           app-name: 'szlearn-szfunction'
           package: './publish'
 
+      - name: logout
+        run: |
+          az logout
